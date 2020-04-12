@@ -1,21 +1,60 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
+
+<head>
+
     <meta charset="UTF-8">
-    <title>Code Quiz</title>
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <div class="header">
-        <h1>Coding Quiz Challenge</h1>
-        <div>
-            <p> Try to answer the following code-related questions within the time limit.<br>
-                Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-            </p>
+
+    <title>Coding Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div id="start">Start Quiz!</div>
+
+        <div id="quiz" style="display: none">
+
+            <div id="question"></div>
+
+            <div id="choices">
+
+                <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+
+                <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+
+                <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+
+                <div class="choice" id="D" onclick="checkAnswer('D')"></div>
+
+
+            </div>
+
+            <div id="timer">
+
+                <div id="counter"></div>
+
+                <div id="btimeGauge"></div>
+
+                <div id="timeGauge"></div>
+
+            </div>
+
+            <div id="progress"></div>
+
         </div>
-        <button class="button" onclick="btnFunction()">Start Quiz</button>
+
+        <div id="scoreContainer" style="display: none"></div>
+
     </div>
+
     <script src="script.js"></script>
-    <form id="quiz-wrap"></form>
-  </body>
+
+</body>
+
 </html>
