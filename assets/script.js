@@ -78,15 +78,15 @@ let questions = [
 const lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 let count = 0;
-const questionTime = 15; // 10s
+const questionTime = 16; // 10s
 const gaugeWidth = 150; // 150px
 const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
-let remainingTime = 75
+let remainingTime = 80
 let score = 0;
 
-// render a question
-function renderQuestion(){
+// show a question
+function showQuestion(){
     let q = questions[runningQuestion];
 
     question.innerHTML = "<p>"+ q.question +"</p>";
@@ -101,26 +101,25 @@ start.addEventListener("click",startQuiz);
 // start quiz
 function startQuiz(){
     start.style.display = "none";
-    renderQuestion();
+    showQuestion();
     quiz.style.display = "inline-block";
-    renderProgress();
-    renderCounter();
-    TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+    showProgress();
+    showCounter();
+    TIMER = setInterval(showCounter,1000); // 1000ms = 1s
 }
 
-// render progress
-function renderProgress(){
+// show progress
+function showProgress(){
     for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
     }
 }
 
-// counter render
+// counter show
 
-function renderCounter(){
+function showCounter(){
     if(count <= questionTime){
       counter.innerHTML = remainingTime;
-      timeGauge.style.width = count * gaugeUnit + "px";
       remainingTime--
     }else{
         count = 0;
@@ -128,11 +127,11 @@ function renderCounter(){
         answerIsWrong();
         if(runningQuestion < lastQuestion){
             runningQuestion++;
-            renderQuestion();
+            showQuestion();
         }else{
             // end the quiz and show the score
             clearInterval(TIMER);
-            scoreRender();
+            scoreshow();
         }
     }
 }
@@ -153,11 +152,11 @@ function checkAnswer(answer){
     count = 0;
     if(runningQuestion < lastQuestion){
         runningQuestion++;
-        renderQuestion();
+        showQuestion();
     }else{
         // end the quiz and show the score
         clearInterval(TIMER);
-        scoreRender();
+        scoreshow();
     }
 }
 
@@ -172,8 +171,8 @@ function answerIsWrong(){
     document.getElementById(runningQuestion).style.backgroundColor = "#f00";
 }
 
-// score render
-function scoreRender(){
+// score show
+function scoreshow(){
     scoreDiv.style.display = "block";
 
     // calculate the amount of question percent answered by the user
