@@ -180,3 +180,4 @@ function scoreRender(){
     scoreDiv.innerHTML = "<img src="+ img +">";
     scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
 }
+
