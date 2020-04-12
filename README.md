@@ -8,3 +8,5 @@ Put your knowledge to the test with this short and fun coding quiz. The pressure
 
 
 ## Click Below to Begin!
+
+ https://riazk88.github.io/code-quiz/
