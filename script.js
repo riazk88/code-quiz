@@ -71,7 +71,7 @@ let questions = [
 const lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 let count = 0;
-const questionTime = 10; // 10s
+const questionTime = 15; // 10s
 const gaugeWidth = 150; // 150px
 const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
@@ -94,7 +94,7 @@ start.addEventListener("click",startQuiz);
 function startQuiz(){
     start.style.display = "none";
     renderQuestion();
-    quiz.style.display = "block";
+    quiz.style.display = "inline-block";
     renderProgress();
     renderCounter();
     TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
@@ -172,18 +172,4 @@ function scoreRender(){
     
     scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
 }
-
-
-//var counter = 0;
-//var timeleft = 75;
-    //var timer = select('#timer'); {
-    //timer.html('0');
-
-    //function timeIt(){
-        //counter++;
-        //timer.html(counter);
-    //}
-
-    //setInterval(timeIt, 1000)
-//}
 
