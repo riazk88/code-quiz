@@ -22,14 +22,21 @@ const progress = document.getElementById("progress");
 
 const scoreDiv = document.getElementById("scoreContainer");
 
+const scoreSubmit = document.getElementById("score-submit");
+
+const userInput = document.getElementById("user-input");
+
+const localStorage = window.localStorage;
+
+
 // create questions
 let questions = [
     {
         question: "Commonly used data types do not include?",
-        choiceA: "strings", 
-        choiceB: "booleans", 
-        choiceC: "alerts", 
-        choiceD: "numbers", 
+        choiceA: "strings",
+        choiceB: "booleans",
+        choiceC: "alerts",
+        choiceD: "numbers",
         correct: "B"
     },
     {
@@ -42,26 +49,26 @@ let questions = [
     },
     {
         question: "The condition in an if/else statement is enclosed with?",
-        choiceA: "quotes", 
-        choiceB: "curly brackets", 
-        choiceC: "parenthesis", 
-        choiceD: "square brackets", 
+        choiceA: "quotes",
+        choiceB: "curly brackets",
+        choiceC: "parenthesis",
+        choiceD: "square brackets",
         correct: "C"
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is?",
-        choiceA: "javascript", 
-        choiceB: "terminal/bash", 
-        choiceC: "for loops", 
-        choiceD: "console.log", 
+        choiceA: "javascript",
+        choiceB: "terminal/bash",
+        choiceC: "for loops",
+        choiceD: "console.log",
         correct: "C"
     },
     {
         question: "What must string values be enclosed in when being assigned to variables?",
-        choiceA: "commas", 
+        choiceA: "commas",
         choiceB: "curly brackets",
         choiceC: "quotes",
-        choiceD: "parenthesis", 
+        choiceD: "parenthesis",
         correct: "B"
     }
 ]
@@ -75,12 +82,13 @@ const questionTime = 15; // 10s
 const gaugeWidth = 150; // 150px
 const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
+let remainingTime = 75
 let score = 0;
 
 // render a question
 function renderQuestion(){
     let q = questions[runningQuestion];
-    
+
     question.innerHTML = "<p>"+ q.question +"</p>";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
@@ -111,9 +119,9 @@ function renderProgress(){
 
 function renderCounter(){
     if(count <= questionTime){
-        counter.innerHTML = count;
-        timeGauge.style.width = count * gaugeUnit + "px";
-        count++
+      counter.innerHTML = remainingTime;
+      timeGauge.style.width = count * gaugeUnit + "px";
+      remainingTime--
     }else{
         count = 0;
         // change progress color to red
@@ -160,16 +168,39 @@ function answerIsCorrect(){
 
 // answer is Wrong
 function answerIsWrong(){
+    remainingTime -= 10
     document.getElementById(runningQuestion).style.backgroundColor = "#f00";
 }
 
 // score render
 function scoreRender(){
     scoreDiv.style.display = "block";
-    
+
     // calculate the amount of question percent answered by the user
     const scorePerCent = Math.round(100 * score/questions.length);
-    
+
     scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
+
+
+    const results = document.querySelector('#results')
+
+    console.log(results)
+
+    results.style.display = "block"
+    quiz.style.display = "none"
 }
 
+
+scoreSubmit.addEventListener('submit', e => {
+  e.preventDefault()
+
+  console.log('form was submitted!')
+
+  const localScores = JSON.parse(localStorage.getItem('scores'))
+
+  localScores.push(userInput.value)
+
+  localStorage.setItem('scores', JSON.stringify(localScores))
+
+  console.log(localScores)
+})

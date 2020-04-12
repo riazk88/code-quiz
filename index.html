@@ -8,7 +8,7 @@
 
     <title>Coding Quiz</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/style.css">
 
 </head>
 
@@ -23,7 +23,7 @@
             </p>
             <button type="button">Start Quiz</button>
         </div>
-        
+
         <div id="quiz" style="display: none">
 
             <div id="question"></div>
@@ -57,9 +57,18 @@
 
         <div id="scoreContainer" style="display: none"></div>
 
+        <div id="results" style="display: none">
+          <p>The game is over. Enter your initials and save your score</p>
+          <p id="result-score"></p>
+          <form id="score-submit" action="">
+            <input id="user-input" type="text"/>
+            <input type="submit" value="Save"/>
+          </form>
+        </div>
+
     </div>
 
-    <script src="script.js"></script>
+    <script src="assets/script.js"></script>
 
 </body>
 
