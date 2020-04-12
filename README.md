@@ -4,7 +4,7 @@ Put your knowledge to the test with this short and fun coding quiz. The pressure
 
 ## Check it Out!
 
-![](codequiz.png)
+![](assets/codequiz.png)
 
 
 ## Click Below to Begin!
