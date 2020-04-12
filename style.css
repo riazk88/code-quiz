@@ -41,12 +41,12 @@ body{
     border-radius: 5px;
     cursor: pointer;
     padding : 5px;
-    background-color: blue;
+    background-color: lightblue;
     color: white;
 }
 .choice:hover{
-    border : 2px solid grey;
-    color: purple;
+    border : 2px solid white;
+    color: darkblue;
 }
 
 .timer{
